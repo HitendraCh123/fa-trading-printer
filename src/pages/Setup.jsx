@@ -91,37 +91,39 @@ export default function Setup() {
   }
 
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    await emailjs.send(
-      "service_b50e08n", // Service ID
-      "template_hyuxh1l", // Template ID
-      {
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        model: form.model,
-        issue: form.issue,
-      },
-      "WHTEW8Ps9-2U_9fEV" // Public Key
-    );
+    try {
+      await emailjs.send(
+        "service_b50e08n", // Service ID
+        "template_hyuxh1l", // Template ID
+        {
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          model: form.model,
+          issue: form.issue,
+        },
+        "WHTEW8Ps9-2U_9fEV" // Public Key
+      );
 
-    setSubmitted(true);
+      setSubmitted(true);
 
-    setForm({
-      name: "",
-      email: "",
-      phone: "",
-      model: "",
-      issue: "",
-    });
-  } catch (error) {
-    console.error("Email Error:", error);
-    alert("Failed to send message.");
-  }
-};
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        model: "",
+        issue: "",
+      });
+    } catch (error) {
+      console.error("Email Error:", error);
+      alert("Failed to send message.");
+    }
+    console.log(form);
+
+  };
 
   return (
     <>
@@ -264,7 +266,7 @@ const handleSubmit = async (e) => {
                   <div className="field">
                     <label htmlFor="phone">Phone Number *</label>
                     <input
-                      id="phone" name="phone" type="tel" required
+                      id="phone" name="phone" type="tel" minLength={10} maxLength={12} required
                       placeholder="Enter your phone number"
                       value={form.phone} onChange={handleChange}
                     />

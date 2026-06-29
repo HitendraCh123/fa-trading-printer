@@ -68,7 +68,7 @@ export default function Diagnose() {
         </div>
       </section>
 
-      <section className="section">
+      {/* <section className="section">
         <div className="container">
           <Reveal>
             <h2 className="section-heading">Select Your Printer Brand</h2>
@@ -92,6 +92,7 @@ export default function Diagnose() {
               </Reveal>
             ))}
           </div>
+          
 
           <AnimatePresence>
             {selectedBrand && (() => {
@@ -118,7 +119,7 @@ export default function Diagnose() {
             })()}
           </AnimatePresence>
         </div>
-      </section>
+      </section> */}
 
       <section className="section issues-section">
         <div className="container">

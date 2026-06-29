@@ -93,6 +93,11 @@ export default function Home() {
     navigate(`/setup?os=${encodeURIComponent(os)}`);
   }
 
+  const handleChooseManually = () => {
+  setShowOsModal(false); // Modal close
+  navigate("/setup");    // Setup page par redirect
+};
+
   useEffect(() => {
     document.body.style.overflow = showOsModal ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -181,6 +186,7 @@ export default function Home() {
               >
                 <X size={18} />
               </button>
+
               <div className="os-card-header">
                 <span className="os-card-label">Operating System Detected</span>
                 <div className="os-card-row">
@@ -196,7 +202,10 @@ export default function Home() {
                     <button className="btn btn-primary btn-sm" onClick={handleYesContinue}>
                       <CheckCircle2 size={15} /> Yes, Continue to Setup
                     </button>
-                    <button className="btn btn-secondary btn-sm" onClick={() => setConfirmed(false)}>
+                    <button
+                      className="btn btn-secondary btn-sm"
+                      onClick={handleChooseManually}
+                    >
                       No, Let me choose
                     </button>
                   </div>
@@ -273,7 +282,9 @@ export default function Home() {
             <h2 className="section-title">We Cover All Major Brands</h2>
             <p className="section-sub">Official drivers sourced directly from the manufacturers.</p>
           </Reveal>
-          <div className="brand-grid">
+
+          {/* brand images   */}
+          {/* <div className="brand-grid">
             {BRANDS.map((b, i) => (
               <Reveal key={b.slug} delay={i * 0.07}>
                 <a href={b.driverUrl} target="_blank" rel="noopener noreferrer" className="brand-card">
@@ -283,7 +294,8 @@ export default function Home() {
                 </a>
               </Reveal>
             ))}
-          </div>
+          </div> */}
+
         </div>
       </section>
 
@@ -307,7 +319,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <Link to="/diagnose" className="btn btn-ghost">Find My Model <ArrowRight size={16} /></Link>
+            <Link to="/setup" className="btn btn-ghost">Find My Model <ArrowRight size={16} /></Link>
           </Reveal>
           <Reveal delay={0.15}>
             <div className="connect-visual">
