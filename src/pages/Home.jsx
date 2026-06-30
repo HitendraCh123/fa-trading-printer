@@ -142,11 +142,11 @@ export default function Home() {
                 Talk to Support
               </Link>
             </div>
-            <div className="hero-trust">
+            {/* <div className="hero-trust">
               {["HP", "Epson", "Canon", "Brother", "Dell"].map(b => (
                 <span key={b} className="hero-brand-badge">{b}</span>
               ))}
-            </div>
+            </div> */}
           </motion.div>
 
           <motion.div

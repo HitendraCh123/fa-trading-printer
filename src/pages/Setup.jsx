@@ -6,6 +6,10 @@ import {
   Phone, CalendarCheck, MessageCircle, ShoppingCart, Wrench, Settings2,
   Gauge, PackagePlus, Network, Headset, CheckCircle2, Send,
 } from "lucide-react";
+
+import { useNavigate } from "react-router-dom";
+
+
 import Reveal from "../components/Reveal";
 import SetupHeader from "../components/SetupHeader";
 import { SITE } from "../config/site";
@@ -83,6 +87,8 @@ const SERVICES = [
 ];
 
 export default function Setup() {
+  const navigate = useNavigate();
+
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", model: "", issue: "" });
 
@@ -117,7 +123,15 @@ export default function Setup() {
         model: "",
         issue: "",
       });
-    } catch (error) {
+
+      setTimeout(() => {
+        window.location.reload();
+        navigate('/setup');
+
+      }, 2000);
+
+    }
+    catch (error) {
       console.error("Email Error:", error);
       alert("Failed to send message.");
     }
@@ -266,7 +280,7 @@ export default function Setup() {
                   <div className="field">
                     <label htmlFor="phone">Phone Number *</label>
                     <input
-                      id="phone" name="phone" type="tel" minLength={10} maxLength={12} required
+                      id="phone" name="phone" type="tel" maxLength={10} required
                       placeholder="Enter your phone number"
                       value={form.phone} onChange={handleChange}
                     />
